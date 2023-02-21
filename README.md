@@ -12,7 +12,7 @@ After cloning the github, you will want to do the following to get the code runn
    
 Once the contract is attached, you can go ahead and call the smart contract functions!
 
-Here are some examples you can run usuing our hardhat provided accounts:
+Here is an example you can run using our hardhat provided accounts:
 
   1. `await bank.deposit(0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266, 1)`
   2. `await bank.getBalance(0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266)`
