@@ -8,7 +8,7 @@ After cloning the github, you will want to do the following to get the code runn
 4. In the third terminal, type: `npx hardhat run --network localhost scripts/deploy.js`
 5. Back in the first terminal, type: `npx hardhat console --network localhost`
 6. Then we'll use this command to attach our smart contract to our console: 
-   `const bank = await (await ethers.getContractFactory("Token")).attach("0x5FbDB2315678afecb367f032d93F642f64180aa3")`
+   `const bank = await (await ethers.getContractFactory("Bank")).attach("0x5FbDB2315678afecb367f032d93F642f64180aa3")`
    
 Once the contract is attached, you can go ahead and call the smart contract functions!
 
