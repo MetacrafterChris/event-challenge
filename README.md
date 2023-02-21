@@ -14,10 +14,10 @@ Once the contract is attached, you can go ahead and call the smart contract func
 
 Here are some examples you can run usuing our hardhat provided accounts:
 
-  await bank.deposit(0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266, 1)
+  `await bank.deposit(0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266, 1)
   await bank.getBalance(0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266)
   await bank.transfer(0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266, 0x70997970C51812dc3A010C7d01b50e0d17dc79C8, 1)
   await bank.getBalance(0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266)
   await bank.getBalance(0x70997970C51812dc3A010C7d01b50e0d17dc79C8)
   await bank.withdraw(0x70997970C51812dc3A010C7d01b50e0d17dc79C8, 1)
-  await bank.getBalance(0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266)
+  await bank.getBalance(0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266)`
