@@ -1,0 +1,88 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract EventExample {
+    // Define events
+    event Deposit(address indexed sender, uint256 amount);
+    event Withdrawal(address indexed recipient, uint256 amount);
+    event Transfer(address indexed from, address indexed to, uint256 amount);
+    event OwnershipTransferred(address indexed oldOwner, address indexed newOwner);
+
+    address public owner;
+
+    constructor() {
+        owner = msg.sender;
+    }
+
+    // Deposit function
+    function deposit() external payable {
+        emit Deposit(msg.sender, msg.value);
+    }
+
+    // Withdrawal function
+    function withdraw(uint256 amount) external {
+        require(amount <= address(this).balance, "Insufficient balance");
+        payable(msg.sender).transfer(amount);
+        emit Withdrawal(msg.sender, amount);
+    }
+
+    // Transfer function
+    function transfer(address to, uint256 amount) external {
+        require(amount <= address(this).balance, "Insufficient balance");
+        payable(to).transfer(amount);
+        emit Transfer(msg.sender, to, amount);
+    }
+
+    // Ownership transfer function
+    function transferOwnership(address newOwner) external {
+        require(msg.sender == owner, "Only owner can transfer ownership");
+        address oldOwner = owner;
+        owner = newOwner;
+        emit OwnershipTransferred(oldOwner, newOwner);
+    }
+}
+
+javascript 
+const Web3 = require('web3');
+const web3 = new Web3('http://localhost:8545'); // Replace with your Ethereum node URL
+
+const contractAddress = '0xYourContractAddress'; // Replace with your contract address
+const abi = [ /* ABI array from your compiled contract */ ];
+
+const contract = new web3.eth.Contract(abi, contractAddress);
+
+// Listen for Deposit events
+contract.events.Deposit({
+    filter: {}, // You can specify filter options here
+    fromBlock: 0 // Starting block
+}, function(error, event) {
+    if (error) console.error(error);
+    else console.log('Deposit event:', event.returnValues);
+});
+
+// Listen for Withdrawal events
+contract.events.Withdrawal({
+    filter: {},
+    fromBlock: 0
+}, function(error, event) {
+    if (error) console.error(error);
+    else console.log('Withdrawal event:', event.returnValues);
+});
+
+// Listen for Transfer events
+contract.events.Transfer({
+    filter: {},
+    fromBlock: 0
+}, function(error, event) {
+    if (error) console.error(error);
+    else console.log('Transfer event:', event.returnValues);
+});
+
+// Listen for OwnershipTransferred events
+contract.events.OwnershipTransferred({
+    filter: {},
+    fromBlock: 0
+}, function(error, event) {
+    if (error) console.error(error);
+    else console.log('OwnershipTransferred event:', event.returnValues);
+});
